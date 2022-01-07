@@ -1,6 +1,6 @@
 package com.example.domain.models.auth
 
-import android.service.autofill.UserData
+import com.example.domain.models.UserData
 
 sealed class LoginResult {
     data class Success(val user: UserData): LoginResult()
