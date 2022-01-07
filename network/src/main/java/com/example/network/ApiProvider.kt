@@ -4,7 +4,7 @@ import com.example.network.retrofit.RetrofitAccessObject
 
 class ApiProvider: IApiProvider {
     companion object {
-        private const val API_URL = ""
+        private const val API_URL = "https://google.com"
     }
 
     override fun getApi(): IChequeAppApi =

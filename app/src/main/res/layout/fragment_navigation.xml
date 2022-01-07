@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    tools:context=".ui.navigation.NavigationFragment">
+
+    <ImageView
+        android:id="@+id/nav_iv_new"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nav_iv_history"
+        android:contentDescription="@string/cd_nav_iv_new"
+        android:src="@drawable/ic_plus"
+        android:padding="20dp"
+        android:background="@color/design_default_color_primary_dark" />
+
+    <ImageView
+        android:id="@+id/nav_iv_history"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/nav_iv_new"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/cd_nav_iv_history"
+        android:src="@drawable/ic_history"
+        android:padding="20dp"
+        android:background="@color/design_default_color_primary_dark" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

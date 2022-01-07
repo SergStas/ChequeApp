@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ChequeApp</string>
+    <string name="app_name">Cheque App</string>
+    <string name="cd_nav_iv_new">New event</string>
+    <string name="cd_nav_iv_history">Show history</string>
 </resources>

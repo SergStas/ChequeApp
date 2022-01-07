@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChequeApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.root.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package com.example.chequeapp.di
 
+import com.example.chequeapp.ui.root.MainActivity
 import dagger.Component
 
 @Component(modules = [
@@ -8,4 +9,6 @@ import dagger.Component
     DataModule::class,
     NetworkModule::class,
 ])
-interface IAppComponent
+interface IAppComponent {
+    fun inject(mainActivity: MainActivity)
+}
