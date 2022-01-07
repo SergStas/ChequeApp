@@ -7,7 +7,12 @@ import dagger.Provides
 
 @Module
 class NetworkModule {
+    private var apiProvider: IApiProvider? = null
+
     @Provides
     fun provideApiProvider(): IApiProvider =
-        ApiProvider()
+       apiProvider ?: run {
+           apiProvider = ApiProvider()
+           apiProvider!!
+       }
 }
