@@ -1,6 +1,6 @@
 package com.example.chequeapp.di
 
-import com.example.domain.network.AbstractApiAccessObject
+import com.example.domain.network.IApiProvider
 import com.example.domain.repository.IUserRepository
 import com.example.domain.usecases.auth.GetLoggedInUserUseCase
 import com.example.domain.usecases.auth.LoginUseCase
@@ -14,28 +14,28 @@ import dagger.Provides
 @Module
 class DomainModule {
     @Provides
-    fun provideGetAllUsersUseCase(api: AbstractApiAccessObject): GetAllUsersUseCase =
+    fun provideGetAllUsersUseCase(api: IApiProvider): GetAllUsersUseCase =
         GetAllUsersUseCase(api)
 
     @Provides
-    fun provideHistoryRequestUseCase(api: AbstractApiAccessObject): HistoryRequestUseCase =
+    fun provideHistoryRequestUseCase(api: IApiProvider): HistoryRequestUseCase =
         HistoryRequestUseCase(api)
 
     @Provides
-    fun provideCalculateResultUseCase(api: AbstractApiAccessObject): CalculateResultUseCase =
+    fun provideCalculateResultUseCase(api: IApiProvider): CalculateResultUseCase =
         CalculateResultUseCase(api)
 
     @Provides
     fun provideRegisterUseCase(
         userRepository: IUserRepository,
-        api: AbstractApiAccessObject
+        api: IApiProvider
     ): RegisterUseCase =
         RegisterUseCase(userRepository, api)
 
     @Provides
     fun provideLoginUseCase(
         userRepository: IUserRepository,
-        api: AbstractApiAccessObject
+        api: IApiProvider
     ): LoginUseCase =
         LoginUseCase(userRepository, api)
 

@@ -2,7 +2,7 @@ package com.example.domain.usecases.auth
 
 import com.example.domain.models.UserData
 import com.example.domain.models.common.NetworkRequestActions
-import com.example.domain.network.AbstractApiAccessObject
+import com.example.domain.network.IApiProvider
 import com.example.domain.network.models.RegistrationData
 import com.example.domain.network.models.responses.RegistrationResponse
 import com.example.domain.repository.IUserRepository
@@ -10,11 +10,11 @@ import retrofit2.Callback
 
 class RegisterUseCase(
     private val userRepository: IUserRepository,
-    private val apiAccessObject: AbstractApiAccessObject,
+    private val apiProvider: IApiProvider,
 ) {
     fun execute(user: RegistrationData, actions: NetworkRequestActions<RegistrationResponse>) {
         actions.preloadAction()
-        val call = apiAccessObject.cApi.register(user)
+        val call = apiProvider.getApi().register(user)
         call.enqueue(getCallbackWithDataSaving(actions, user))
     }
 

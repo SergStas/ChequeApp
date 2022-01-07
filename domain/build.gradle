@@ -37,9 +37,6 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
-    // noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
-
     // Tests
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

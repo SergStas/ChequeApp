@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ChequeApp"
 include ':app'
 include ':domain'
+include ':network'
