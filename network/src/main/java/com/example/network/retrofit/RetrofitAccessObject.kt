@@ -1,13 +1,23 @@
 package com.example.network.retrofit
 
+import com.example.domain.models.EventData
 import com.example.domain.models.PaymentData
 import com.example.domain.models.SessionData
 import com.example.domain.models.UserData
-import com.example.domain.network.models.RegistrationData
-import com.example.domain.network.models.responses.*
-import com.example.network.converters.deserializers.models.*
-import com.example.network.converters.deserializers.responses.*
-import com.example.network.converters.serializers.models.*
+import com.example.domain.models.auth.RegistrationParams
+import com.example.network.converters.deserializers.*
+import com.example.network.converters.deserializers.PartDataDeserializer
+import com.example.network.converters.deserializers.PaymentDataDeserializer
+import com.example.network.converters.deserializers.SessionDataDeserializer
+import com.example.network.converters.deserializers.TransactionDataDeserializer
+import com.example.network.converters.deserializers.UserDataDeserializer
+import com.example.network.converters.serializers.*
+import com.example.network.converters.serializers.PartDataSerializer
+import com.example.network.converters.serializers.PositionDataSerializer
+import com.example.network.converters.serializers.RegistrationDataSerializer
+import com.example.network.converters.serializers.SessionDataSerializer
+import com.example.network.converters.serializers.UserDataSerializer
+import com.example.network.models.responses.*
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,10 +49,11 @@ internal object RetrofitAccessObject {
 
     private fun addSerializers(builder: GsonBuilder): GsonBuilder =
         builder.apply {
+            registerTypeAdapter(EventData::class.java, EventDataDeserializer)
             registerTypeAdapter(SessionData.PartData::class.java, PartDataSerializer)
             registerTypeAdapter(SessionData.PositionData::class.java, PositionDataSerializer)
             registerTypeAdapter(SessionData.ReceiptData::class.java, ReceiptDataSerializer)
-            registerTypeAdapter(RegistrationData::class.java, RegistrationDataSerializer)
+            registerTypeAdapter(RegistrationParams::class.java, RegistrationDataSerializer)
             registerTypeAdapter(SessionData::class.java, SessionDataSerializer)
             registerTypeAdapter(UserData::class.java, UserDataSerializer)
         }
@@ -57,7 +68,7 @@ internal object RetrofitAccessObject {
             registerTypeAdapter(PaymentData.TransactionData::class.java, TransactionDataDeserializer)
             registerTypeAdapter(UserData::class.java, UserDataDeserializer)
             registerTypeAdapter(AllUsersResponse::class.java, AllUsersResponseDeserializer)
-            registerTypeAdapter(CalculateResultResponse::class.java, CalculationResultResponseDeserializer)
+            registerTypeAdapter(CalculationResponse::class.java, CalculationResponseDeserializer)
             registerTypeAdapter(HistoryResponse::class.java, HistoryResponseDeserializer)
             registerTypeAdapter(LoginResponse::class.java, LoginResponseDeserializer)
             registerTypeAdapter(RegistrationResponse::class.java, RegistrationResponseDeserializer)

@@ -1,7 +1,5 @@
 package com.example.network
 
-import com.example.domain.network.IApiProvider
-import com.example.domain.network.IChequeAppApi
 import com.example.network.retrofit.RetrofitAccessObject
 
 class ApiProvider: IApiProvider {

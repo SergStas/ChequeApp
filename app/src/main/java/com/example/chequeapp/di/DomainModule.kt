@@ -1,11 +1,12 @@
 package com.example.chequeapp.di
 
-import com.example.domain.network.IApiProvider
+import com.example.domain.repository.IEventsRepository
+import com.example.network.IApiProvider
 import com.example.domain.repository.IUserRepository
 import com.example.domain.usecases.auth.GetLoggedInUserUseCase
 import com.example.domain.usecases.auth.LoginUseCase
 import com.example.domain.usecases.auth.RegisterUseCase
-import com.example.domain.usecases.calculate.CalculateResultUseCase
+import com.example.domain.usecases.calculate.CalculationUseCase
 import com.example.domain.usecases.history.HistoryRequestUseCase
 import com.example.domain.usecases.users.GetAllUsersUseCase
 import dagger.Module
@@ -14,30 +15,24 @@ import dagger.Provides
 @Module
 class DomainModule {
     @Provides
-    fun provideGetAllUsersUseCase(api: IApiProvider): GetAllUsersUseCase =
-        GetAllUsersUseCase(api)
+    fun provideGetAllUsersUseCase(userRepository: IUserRepository): GetAllUsersUseCase =
+        GetAllUsersUseCase(userRepository)
 
     @Provides
-    fun provideHistoryRequestUseCase(api: IApiProvider): HistoryRequestUseCase =
-        HistoryRequestUseCase(api)
+    fun provideHistoryRequestUseCase(eventsRepository: IEventsRepository): HistoryRequestUseCase =
+        HistoryRequestUseCase(eventsRepository)
 
     @Provides
-    fun provideCalculateResultUseCase(api: IApiProvider): CalculateResultUseCase =
-        CalculateResultUseCase(api)
+    fun provideCalculationUseCase(eventsRepository: IEventsRepository): CalculationUseCase =
+        CalculationUseCase(eventsRepository)
 
     @Provides
-    fun provideRegisterUseCase(
-        userRepository: IUserRepository,
-        api: IApiProvider
-    ): RegisterUseCase =
-        RegisterUseCase(userRepository, api)
+    fun provideRegisterUseCase(userRepository: IUserRepository): RegisterUseCase =
+        RegisterUseCase(userRepository)
 
     @Provides
-    fun provideLoginUseCase(
-        userRepository: IUserRepository,
-        api: IApiProvider
-    ): LoginUseCase =
-        LoginUseCase(userRepository, api)
+    fun provideLoginUseCase(userRepository: IUserRepository): LoginUseCase =
+        LoginUseCase(userRepository)
 
     @Provides
     fun provideGetLoggedInUserUseCase(userRepository: IUserRepository): GetLoggedInUserUseCase =

@@ -1,16 +1,11 @@
 package com.example.domain.usecases.history
 
-import com.example.domain.models.UserData
-import com.example.domain.models.common.NetworkRequestActions
-import com.example.domain.network.IApiProvider
-import com.example.domain.network.models.responses.HistoryResponse
+import com.example.domain.models.EventData
+import com.example.domain.repository.IEventsRepository
 
 class HistoryRequestUseCase(
-    private val apiProvider: IApiProvider,
+    private val eventsRepository: IEventsRepository,
 ) {
-    fun execute(userData: UserData, actions: NetworkRequestActions<HistoryResponse>) {
-        actions.preloadAction()
-        val call = apiProvider.getApi().getHistory(username = userData.name)
-        call.enqueue(actions.toCallback())
-    }
+    fun execute(): List<EventData> =
+        eventsRepository.getEventsHistory()
 }
