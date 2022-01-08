@@ -1,5 +1,6 @@
 package com.example.chequeapp.di
 
+import com.example.chequeapp.ui.auth.AuthFragment
 import com.example.chequeapp.ui.root.MainActivity
 import dagger.Component
 
@@ -11,4 +12,6 @@ import dagger.Component
 ])
 interface IAppComponent {
     fun inject(mainActivity: MainActivity)
+
+    fun inject(authFragment: AuthFragment)
 }

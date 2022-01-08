@@ -2,4 +2,19 @@
     <string name="app_name">Cheque App</string>
     <string name="cd_nav_iv_new">New event</string>
     <string name="cd_nav_iv_history">Show history</string>
+    <string name="auth_menu_tv_first_launch">Seems like it\'s your first launch</string>
+    <string name="auth_menu_b_register">Register</string>
+    <string name="auth_menu_b_login">Login</string>
+    <string name="auth_register_tv_title">Please, enter your username and telegram tag</string>
+    <string name="auth_register_tv_desc">IMPORTANT:\nWe will use telegram to notify you about new cheques. Please specify your real telegram tag</string>
+    <string name="auth_register_et_username">Username</string>
+    <string name="auth_register_et_telegram">\@telegram_tag</string>
+    <string name="auth_register_b_submit">Submit</string>
+    <string name="auth_register_tv_login"><u>Already have an account</u></string>
+    <string name="auth_login_et_username">Enter your username…</string>
+    <string name="auth_login_tv_register"><u>Don\'t have an account</u></string>
+    <string name="auth_login_b_submit">Login</string>
+    <string name="auth_login_tv_title">Log in</string>
+    <string name="auth_login_tv_error">User not found, please check your username or register new account</string>
+    <string name="auth_register_tv_error">This username is already occupied</string>
 </resources>

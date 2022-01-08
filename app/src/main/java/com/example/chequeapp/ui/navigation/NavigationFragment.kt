@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.chequeapp.R
-import com.example.chequeapp.ui.models.AppSection
+import com.example.chequeapp.models.AppSection
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import kotlinx.android.synthetic.main.fragment_navigation.*
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.auth.AuthRegistrationFragment"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/auth_register_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/auth_register_tv_title"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/auth_register_tv_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/auth_register_tv_desc"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/auth_register_tv_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#f00"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:text="@string/auth_register_tv_error" />
+
+    <EditText
+        android:id="@+id/auth_register_et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/auth_register_et_username"
+        android:autofillHints="username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/auth_register_et_telegram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/auth_register_et_telegram"
+        android:autofillHints="username"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/auth_register_b_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18sp"
+        android:text="@string/auth_register_b_submit" />
+
+    <TextView
+        android:id="@+id/auth_register_tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auth_register_tv_login"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center" />
+
+</LinearLayout>
