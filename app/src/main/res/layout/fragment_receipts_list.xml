@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.newevent.receipts.ReceiptsListFragment">
+
+    <TextView
+        android:id="@+id/new_receipts_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/new_receipts_tv_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/new_receipts_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/new_receipts_tv_title"
+        app:layout_constraintBottom_toTopOf="@id/new_receipts_tv_add" />
+
+    <TextView
+        android:id="@+id/new_receipts_tv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/new_receipts_et_add"
+        app:layout_constraintBottom_toBottomOf="@id/new_receipts_et_add"
+        android:text="@string/new_receipts_tv_add"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <EditText
+        android:id="@+id/new_receipts_et_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toEndOf="@id/new_receipts_tv_add"
+        app:layout_constraintBottom_toBottomOf="@id/new_receipts_iv_add"
+        app:layout_constraintTop_toTopOf="@id/new_receipts_iv_add"
+        app:layout_constraintEnd_toStartOf="@id/new_receipts_iv_add"
+        android:hint="@string/new_receipts_et_add_hint"
+        android:inputType="text"
+        android:autofillHints="no" />
+
+    <ImageView
+        android:id="@+id/new_receipts_iv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@string/cd_iv_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_tv_users_error"
+        android:layout_marginBottom="6dp"
+        android:padding="6dp"
+        app:layout_constraintStart_toEndOf="@id/new_receipts_et_add" />
+
+    <TextView
+        android:id="@+id/new_tv_users_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/new_b_finish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="An error has occurred"
+        android:textColor="#f00" />
+
+    <Button
+        android:id="@+id/new_b_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/new_b_finish" />
+
+    <Button
+        android:id="@+id/new_b_back_to_users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/new_b_finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="10dp"
+        android:text="@string/new_b_back_to_names" />
+
+    <TextView
+        android:id="@+id/new_receipts_tv_step_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_tv_step_3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

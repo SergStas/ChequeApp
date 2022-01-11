@@ -64,7 +64,7 @@ class MainActivity : AbstractRootActivity() {
     private fun setActivePage() {
         main_container_nav.isVisible = viewModel.activePageLive.value != AppSection.Auth
         supportFragmentManager.beginTransaction()
-            .add(R.id.main_container_page, activeFragment)
+            .replace(R.id.main_container_page, activeFragment)
             .commit()
     }
 }

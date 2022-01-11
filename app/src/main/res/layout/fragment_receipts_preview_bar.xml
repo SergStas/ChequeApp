@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    tools:context=".ui.newevent.receipts.ReceiptsPreviewBarFragment">
+
+    <ImageView
+        android:id="@+id/rpb_iv_cross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:src="@drawable/ic_cross"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/rpb_tv_title"
+        android:contentDescription="@string/cd_iv_delete" />
+
+    <TextView
+        android:id="@+id/rpb_tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rpb_iv_cross"
+        app:layout_constraintEnd_toStartOf="@id/rpb_tv_price"
+        android:textSize="24sp"
+        android:layout_marginStart="14dp"
+        tools:text="Cheque title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/rpb_tv_price"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rpb_b_edit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        tools:text="199.98 RUB" />
+
+    <TextView
+        android:id="@+id/rpb_tv_pos_cnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/rpb_tv_price"
+        app:layout_constraintTop_toBottomOf="@id/rpb_tv_price"
+        app:layout_constraintBottom_toBottomOf="@id/rpb_tv_title"
+        tools:text="99 positions" />
+
+    <Button
+        android:id="@+id/rpb_b_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/rpb_tv_title"
+        android:text="@string/rpb_b_edit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

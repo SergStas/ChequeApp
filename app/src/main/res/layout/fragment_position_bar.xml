@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.newevent.receipts.PositionBarFragment">
+
+    <ImageView
+        android:id="@+id/position_iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/cd_iv_delete"
+        android:src="@drawable/ic_cross"
+        android:background="#ddd"
+        android:padding="6dp" />
+
+    <EditText
+        android:id="@+id/position_et_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/position_et_price"
+        app:layout_constraintBottom_toBottomOf="@id/position_et_price"
+        app:layout_constraintEnd_toStartOf="@id/position_et_price"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        android:hint="@string/position_et_title" />
+
+    <EditText
+        android:id="@+id/position_et_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/position_iv_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/position_et_price_hint"
+        android:autofillHints="no"
+        android:inputType="numberDecimal" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/position_layout_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/position_et_price"
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:layout_height="wrap_content" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/position_b_add_part" />
+
+        <TextView
+            android:id="@+id/position_tv_new_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/position_b_add_part"
+            app:layout_constraintBottom_toBottomOf="@id/position_b_add_part"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/position_tv_new_part" />
+
+        <Spinner
+            android:id="@+id/receipt_new_part_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/position_tv_new_part"
+            app:layout_constraintEnd_toStartOf="@id/position_b_add_part"
+            app:layout_constraintTop_toTopOf="@id/position_b_add_part"
+            app:layout_constraintBottom_toBottomOf="@id/position_b_add_part" />
+
+        <ImageView
+            android:id="@+id/position_b_add_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:src="@drawable/ic_plus"
+            android:contentDescription="@string/cd_iv_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/receipt_tv_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/position_layout_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="An error has occurred"
+        android:textColor="#f00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

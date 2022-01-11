@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.newevent.users.NewEventUsersFragment"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/new_tv_title_users"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/new_tv_title_users" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/new_rv_users"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#eee"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_tv_title_users"
+        app:layout_constraintBottom_toTopOf="@id/new_tv_users_spinner_label"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/new_tv_empty_users_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/new_rv_users"
+        app:layout_constraintTop_toTopOf="@id/new_rv_users"
+        android:text="@string/new_tv_empty_users_list"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/new_tv_users_spinner_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_users_spinner"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="@string/new_tv_users_spinner_label" />
+
+    <Spinner
+        android:id="@+id/new_users_spinner"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#eee"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_tv_users_error"
+        app:layout_constraintEnd_toStartOf="@id/new_users_b_add" />
+
+    <ImageView
+        android:id="@+id/new_users_b_add"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="6dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@string/cd_iv_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/new_users_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/new_users_spinner" />
+
+    <TextView
+        android:id="@+id/new_tv_users_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/new_b_to_receipts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="An error has occurred"
+        android:textColor="#f00" />
+
+    <Button
+        android:id="@+id/new_b_to_receipts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/new_b_to_receipts" />
+
+    <Button
+        android:id="@+id/new_b_back_to_names"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/new_b_to_receipts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="10dp"
+        android:text="@string/new_b_back_to_names" />
+
+    <TextView
+        android:id="@+id/new_tv_step_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_tv_step_2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
