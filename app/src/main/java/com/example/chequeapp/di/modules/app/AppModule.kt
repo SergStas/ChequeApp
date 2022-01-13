@@ -1,8 +1,10 @@
-package com.example.chequeapp.di
+package com.example.chequeapp.di.modules.app
 
 import android.content.Context
 import com.example.chequeapp.presentation.auth.AbstractAuthViewModel
 import com.example.chequeapp.presentation.auth.AuthViewModel
+import com.example.chequeapp.presentation.newevent.AbstractNewEventViewModel
+import com.example.chequeapp.presentation.newevent.NewEventViewModel
 import com.example.chequeapp.presentation.root.AbstractRootPageViewModel
 import com.example.chequeapp.presentation.root.RootPageViewModel
 import com.example.domain.repository.IUserRepository

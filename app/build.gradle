@@ -44,6 +44,9 @@ dependencies {
     implementation project(":network")
     implementation project(":data")
 
+    // Calendar
+    implementation 'com.squareup:android-times-square:1.6.5@aar'
+
     // Dagger
     implementation 'com.google.dagger:dagger:2.40.1'
     implementation 'javax.inject:javax.inject:1'

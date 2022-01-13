@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import com.example.chequeapp.App
 import com.example.chequeapp.R
 import com.example.chequeapp.presentation.root.AbstractRootPageViewModel
-import com.example.chequeapp.models.AppSection
+import com.example.chequeapp.models.navigation.AppSection
 import com.example.chequeapp.ui.auth.AuthFragment
 import com.example.chequeapp.ui.navigation.NavigationFragment
+import com.example.chequeapp.ui.newevent.NewEventFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AbstractRootActivity() {
     private val navBar = NavigationFragment(this)
+
     private val authFragment = AuthFragment(this)
+    private val newEventFragment = NewEventFragment(this)
+    private val historyFragment = Fragment()
 
     private lateinit var activeFragment: Fragment
 
@@ -49,9 +53,9 @@ class MainActivity : AbstractRootActivity() {
 
         viewModel.activePageLive.observe(this) { section ->
             activeFragment = when (section) {
-                AppSection.NewEvent -> Fragment()
+                AppSection.NewEvent -> newEventFragment
                 AppSection.Auth -> authFragment
-                AppSection.History -> Fragment()
+                AppSection.History -> historyFragment
                 else -> Fragment()
             }
             setActivePage()

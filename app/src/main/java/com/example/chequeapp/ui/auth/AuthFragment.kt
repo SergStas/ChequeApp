@@ -42,7 +42,7 @@ class AuthFragment(
 
     private fun subscribeOnViewModel() {
         viewModel.loadingStateLive.observe(activity) { b ->
-            auth_pb.isVisible = b
+            auth_pb?.isVisible = b
         }
 
         viewModel.pageLive.observe(activity) { page ->

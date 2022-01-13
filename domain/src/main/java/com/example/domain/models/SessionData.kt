@@ -2,7 +2,7 @@ package com.example.domain.models
 
 data class SessionData(
     val name: String,
-    val date: String,
+    val date: Long,
     val participants: List<UserData>,
     val receipts: List<ReceiptData>,
 ) {

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.chequeapp.R
-import com.example.chequeapp.models.AppSection
+import com.example.chequeapp.models.navigation.AppSection
 import com.example.chequeapp.models.auth.AuthPage
 import com.example.chequeapp.presentation.auth.AbstractAuthViewModel
 import com.example.chequeapp.ui.root.AbstractRootActivity

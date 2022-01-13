@@ -1,4 +1,4 @@
-package com.example.chequeapp.models
+package com.example.chequeapp.models.navigation
 
 enum class AppSection {
     NewEvent,

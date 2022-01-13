@@ -1,4 +1,4 @@
-package com.example.chequeapp.di
+package com.example.chequeapp.di.modules
 
 import com.example.network.IApiProvider
 import com.example.network.ApiProvider

@@ -1,7 +1,7 @@
 package com.example.chequeapp
 
 import android.app.Application
-import com.example.chequeapp.di.AppModule
+import com.example.chequeapp.di.modules.app.AppModule
 import com.example.chequeapp.di.DaggerIAppComponent
 import com.example.chequeapp.di.IAppComponent
 

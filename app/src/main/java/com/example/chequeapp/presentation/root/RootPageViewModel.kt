@@ -1,7 +1,7 @@
 package com.example.chequeapp.presentation.root
 
 import androidx.lifecycle.MutableLiveData
-import com.example.chequeapp.models.AppSection
+import com.example.chequeapp.models.navigation.AppSection
 import com.example.domain.models.UserData
 import com.example.domain.repository.IUserRepository
 
