@@ -7,5 +7,11 @@ class GetAllUsersUseCase(
     private val userRepository: IUserRepository,
 ) {
     fun execute(): List<UserData> =
-        userRepository.getAllUsers()
+        listOf(
+            UserData("Danila"),
+            UserData("Gooseale"),
+            UserData("Sasha"),
+            UserData("Lesha"),
+        )
+//        userRepository.getAllUsers()  // TODO: uncomment when server starts
 }

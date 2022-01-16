@@ -53,4 +53,7 @@
     <string name="new_b_show_calendar_hide">Hide</string>
     <string name="new_names_error_date_is_null">Please, select date</string>
     <string name="new_names_error_name_is_null">Please, input name of event</string>
+    <string name="new_uses_error_failed_to_load">Failed to load users</string>
+    <string name="new_users_spinner_empty_ph">No available users</string>
+    <string name="new_users_error_at_least_2">Please, select at least 2 users</string>
 </resources>

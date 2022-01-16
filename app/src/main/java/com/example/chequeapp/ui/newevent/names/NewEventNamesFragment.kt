@@ -26,8 +26,26 @@ class NewEventNamesFragment: Fragment() {
 
         parentActivity = activity as AbstractRootActivity
         injectDependencies()
+        setCalendar()
         subscribeOnViewModel()
         setListeners()
+    }
+
+    private fun setCalendar() =
+        new_calendar.run {
+            init(
+                Calendar.getInstance().apply { add(Calendar.YEAR, -1) }.time,
+                Calendar.getInstance().apply { add(Calendar.YEAR, 1) }.time,
+            ).withSelectedDate(Date())
+
+            setOnDateSelectedListener(object : CalendarPickerView.OnDateSelectedListener {
+                override fun onDateSelected(date: Date?) {
+                    if (date != null)
+                        viewModel.changeDate(date)
+                }
+
+                override fun onDateUnselected(date: Date?) {}
+            })
     }
 
     override fun onCreateView(
@@ -49,6 +67,7 @@ class NewEventNamesFragment: Fragment() {
 
         viewModel.dateLive.observe(parentActivity) { date ->
             new_tv_date.text = SimpleDateFormat("dd MMM yyyy", Locale.US).format(date)
+            new_calendar.selectDate(date)
         }
 
         viewModel.eventNameLive.observe(parentActivity) { name ->
@@ -65,22 +84,6 @@ class NewEventNamesFragment: Fragment() {
     private fun setListeners() {
         new_b_show_calendar.setOnClickListener {
             viewModel.switchCalendarVisibility()
-        }
-
-        new_calendar.run {
-            init(
-                Calendar.getInstance().apply { add(Calendar.YEAR, -1) }.time,
-                Calendar.getInstance().apply { add(Calendar.YEAR, 1) }.time,
-            ).withSelectedDate(Date())
-
-            setOnDateSelectedListener(object : CalendarPickerView.OnDateSelectedListener {
-                override fun onDateSelected(date: Date?) {
-                    if (date != null)
-                        viewModel.changeDate(date)
-                }
-
-                override fun onDateUnselected(date: Date?) {}
-            })
         }
 
         new_b_to_users.setOnClickListener {

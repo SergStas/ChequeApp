@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.newevent.users.NewEventUsersFragment"
+    tools:context=".ui.newevent.users.NewEventParticipantsFragment"
     android:padding="20dp">
 
     <TextView
         android:id="@+id/new_tv_title_users"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,8 +57,17 @@
         android:background="#eee"
         android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/new_receipts_tv_users_error"
+        app:layout_constraintBottom_toTopOf="@id/new_users_tv_error"
         app:layout_constraintEnd_toStartOf="@id/new_users_b_add" />
+
+    <ProgressBar
+        android:id="@+id/new_users_spinner_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/new_users_spinner"
+        app:layout_constraintTop_toTopOf="@id/new_users_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/new_users_spinner"
+        android:padding="8dp" />
 
     <ImageView
         android:id="@+id/new_users_b_add"
@@ -73,12 +82,11 @@
         app:layout_constraintBottom_toBottomOf="@id/new_users_spinner" />
 
     <TextView
-        android:id="@+id/new_receipts_tv_users_error"
-        android:layout_width="match_parent"
+        android:id="@+id/new_users_tv_error"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/new_b_to_receipts"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:text="An error has occurred"
         android:textColor="#f00" />
 
@@ -87,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_tv_step_2"
         android:text="@string/new_b_to_receipts" />
 
     <Button
@@ -95,7 +103,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@id/new_b_to_receipts"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/new_b_to_receipts"
+        app:layout_constraintTop_toTopOf="@id/new_b_to_receipts"
         android:layout_marginEnd="10dp"
         android:text="@string/new_b_back_to_names" />
 

@@ -12,7 +12,7 @@ import com.example.chequeapp.presentation.newevent.AbstractNewEventViewModel
 import com.example.chequeapp.ui.newevent.names.NewEventNamesFragment
 import com.example.chequeapp.ui.newevent.receipts.NewReceiptFragment
 import com.example.chequeapp.ui.newevent.receipts.ReceiptsListFragment
-import com.example.chequeapp.ui.newevent.users.NewEventUsersFragment
+import com.example.chequeapp.ui.newevent.users.NewEventParticipantsFragment
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ class NewEventFragment(
     lateinit var viewModel: AbstractNewEventViewModel
 
     private val namesFragment = NewEventNamesFragment()
-    private val usersFragment = NewEventUsersFragment()
+    private val usersFragment = NewEventParticipantsFragment(parentActivity)
     private val receiptsFragment = ReceiptsListFragment()
     private val newReceiptFragment = NewReceiptFragment()
     private val resultsFragment = Fragment()
