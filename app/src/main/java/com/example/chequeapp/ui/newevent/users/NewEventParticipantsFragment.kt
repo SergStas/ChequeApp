@@ -69,9 +69,9 @@ class NewEventParticipantsFragment(
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val name = parent?.getItemAtPosition(position) as String
-                if (name != getString(R.string.new_users_spinner_empty_ph)) {
-                    selectedUser = UserData(name)
-                }
+                selectedUser =
+                    if (name != getString(R.string.new_users_spinner_empty_ph)) UserData(name)
+                    else null
             }
         }
         submitSpinner(emptyList())
