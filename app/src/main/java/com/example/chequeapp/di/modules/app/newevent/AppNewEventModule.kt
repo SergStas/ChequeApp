@@ -7,6 +7,8 @@ import com.example.chequeapp.presentation.newevent.names.AbstractNevEventNamesPa
 import com.example.chequeapp.presentation.newevent.names.NewEventNamesPageViewModel
 import com.example.chequeapp.presentation.newevent.participants.AbstractNewEventParticipantsPageViewModel
 import com.example.chequeapp.presentation.newevent.participants.NewEventParticipantsPageViewModel
+import com.example.chequeapp.presentation.newevent.receipts.AbstractNewEventReceiptsViewModel
+import com.example.chequeapp.presentation.newevent.receipts.NewEventReceiptsViewModel
 import com.example.chequeapp.validation.newevent.INewEventNamesPageValidator
 import com.example.chequeapp.validation.newevent.NewEventNamesPageValidator
 import com.example.domain.usecases.users.GetAllUsersUseCase
@@ -18,6 +20,8 @@ class AppNewEventModule {
     private var viewModel: AbstractNewEventViewModel? = null
     private var namesPageViewModel: AbstractNevEventNamesPageViewModel? = null
     private var participantsPageViewModel: AbstractNewEventParticipantsPageViewModel? = null
+    private var receiptsPageViewModel: AbstractNewEventReceiptsViewModel? = null
+
     private var namesPageValidator: INewEventNamesPageValidator? = null
 
     @Provides
@@ -55,6 +59,19 @@ class AppNewEventModule {
                 allUsersUseCase = useCase,
             )
             participantsPageViewModel!!
+        }
+
+    @Provides
+    fun provideReceiptsViewModel(
+        context: Context,
+        viewModel: AbstractNewEventViewModel,
+    ): AbstractNewEventReceiptsViewModel =
+        receiptsPageViewModel ?: run {
+            receiptsPageViewModel = NewEventReceiptsViewModel(
+                context = context,
+                rootViewModel = viewModel,
+            )
+            receiptsPageViewModel!!
         }
 
     @Provides

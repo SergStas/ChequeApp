@@ -8,6 +8,8 @@ import com.example.chequeapp.di.modules.app.newevent.AppNewEventModule
 import com.example.chequeapp.ui.auth.AuthFragment
 import com.example.chequeapp.ui.newevent.NewEventFragment
 import com.example.chequeapp.ui.newevent.names.NewEventNamesFragment
+import com.example.chequeapp.ui.newevent.receipts.NewReceiptFragment
+import com.example.chequeapp.ui.newevent.receipts.ReceiptsListFragment
 import com.example.chequeapp.ui.newevent.users.NewEventParticipantsFragment
 import com.example.chequeapp.ui.root.MainActivity
 import dagger.Component
@@ -29,4 +31,8 @@ interface IAppComponent {
     fun inject(newEventNamesFragment: NewEventNamesFragment)
 
     fun inject(newEventParticipantsFragment: NewEventParticipantsFragment)
+
+    fun inject(receiptsListFragment: ReceiptsListFragment)
+
+    fun inject(newEventReceiptFragment: NewReceiptFragment)
 }

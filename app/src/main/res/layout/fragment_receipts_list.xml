@@ -27,6 +27,16 @@
         app:layout_constraintBottom_toTopOf="@id/new_receipts_tv_add" />
 
     <TextView
+        android:id="@+id/new_receipts_tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/new_receipts_rv"
+        app:layout_constraintEnd_toEndOf="@id/new_receipts_rv"
+        app:layout_constraintTop_toTopOf="@id/new_receipts_rv"
+        android:text="@string/new_receipts_tv_empty"
+        android:layout_marginTop="20dp" />
+
+    <TextView
         android:id="@+id/new_receipts_tv_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,13 +67,13 @@
         android:src="@drawable/ic_plus"
         android:contentDescription="@string/cd_iv_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/new_users_tv_error"
+        app:layout_constraintBottom_toTopOf="@id/new_receipts_tv_error"
         android:layout_marginBottom="6dp"
         android:padding="6dp"
         app:layout_constraintStart_toEndOf="@id/new_receipts_et_add" />
 
     <TextView
-        android:id="@+id/new_users_tv_error"
+        android:id="@+id/new_receipts_tv_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/new_b_finish"

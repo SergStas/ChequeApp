@@ -24,8 +24,8 @@ class NewEventFragment(
 
     private val namesFragment = NewEventNamesFragment()
     private val usersFragment = NewEventParticipantsFragment(parentActivity)
-    private val receiptsFragment = ReceiptsListFragment()
-    private val newReceiptFragment = NewReceiptFragment()
+    private val receiptsFragment = ReceiptsListFragment(parentActivity)
+    private val newReceiptFragment = NewReceiptFragment(parentActivity)
     private val resultsFragment = Fragment()
 
     private var activeFragment = Fragment()

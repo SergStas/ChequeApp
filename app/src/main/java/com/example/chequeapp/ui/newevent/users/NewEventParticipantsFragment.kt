@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chequeapp.App
 import com.example.chequeapp.R
 import com.example.chequeapp.presentation.newevent.participants.AbstractNewEventParticipantsPageViewModel
-import com.example.chequeapp.ui.newevent.users.adapters.NewEventParticipantsAdapter
+import com.example.chequeapp.adapters.NewEventParticipantsAdapter
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import com.example.domain.models.UserData
 import kotlinx.android.synthetic.main.fragment_new_event_users.*

@@ -17,5 +17,6 @@ internal object ReceiptDataSerializer: JsonSerializer<SessionData.ReceiptData> {
                     src.positions.forEach { p -> add(context.serialize(p)) }
                 },
             )
+            addProperty("name", src.name)
         }
 }

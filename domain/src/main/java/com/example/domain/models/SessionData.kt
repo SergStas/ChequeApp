@@ -1,15 +1,25 @@
 package com.example.domain.models
 
 data class SessionData(
-    val name: String,
-    val date: Long,
-    val participants: List<UserData>,
-    val receipts: List<ReceiptData>,
+    var name: String,
+    var date: Long,
+    var participants: List<UserData>,
+    var receipts: List<ReceiptData>,
 ) {
     data class ReceiptData(
+        val name: String,
         val payer: UserData,
         val positions: List<PositionData>,
-    )
+    ) {
+        companion object {
+            fun namedAs(name: String) =
+                ReceiptData(
+                    name = name,
+                    payer = UserData(""),
+                    positions = emptyList(),
+                )
+        }
+    }
 
     data class PositionData(
         val name: String,

@@ -17,6 +17,7 @@ internal object ReceiptDataDeserializer: JsonDeserializer<SessionData.ReceiptDat
         SessionData.ReceiptData(
             payer = context!!.deserialize((json as JsonObject)["payer"], UserData::class.java),
             positions = json["positions"].asJsonArray
-                .map { j -> context.deserialize(j, SessionData.PositionData::class.java) }
+                .map { j -> context.deserialize(j, SessionData.PositionData::class.java) },
+            name = json["name"].asString
         )
 }

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.chequeapp.R
 import com.example.chequeapp.models.newevent.NewEventPage
 import com.example.chequeapp.presentation.newevent.AbstractNewEventViewModel
-import com.example.chequeapp.ui.newevent.users.adapters.NewEventParticipantsAdapter
 import com.example.domain.models.UserData
 import com.example.domain.usecases.users.GetAllUsersUseCase
 import io.reactivex.Observable
