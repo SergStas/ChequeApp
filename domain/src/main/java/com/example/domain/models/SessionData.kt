@@ -22,10 +22,17 @@ data class SessionData(
     }
 
     data class PositionData(
-        val name: String,
-        val price: Float,
-        val parts: List<PartData>,
-    )
+        var name: String,
+        var price: Float,
+        var parts: List<PartData>,
+    ) {
+        fun applyDefaultParts(users: List<UserData>) {
+            if (users.isEmpty()) return
+            parts = users.map { user ->
+                PartData(user, 100f / users.size)
+            }
+        }
+    }
 
     data class PartData(
         val user: UserData,

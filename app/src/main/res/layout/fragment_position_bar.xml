@@ -52,6 +52,7 @@
         android:layout_height="wrap_content" >
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/position_rv_parts"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:layout_height="200dp"
