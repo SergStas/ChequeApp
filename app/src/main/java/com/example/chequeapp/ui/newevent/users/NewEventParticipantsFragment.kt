@@ -11,6 +11,7 @@ import com.example.chequeapp.App
 import com.example.chequeapp.R
 import com.example.chequeapp.presentation.newevent.participants.AbstractNewEventParticipantsPageViewModel
 import com.example.chequeapp.adapters.NewEventParticipantsAdapter
+import com.example.chequeapp.adapters.utils.DefaultSpinnerAdapter
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import com.example.domain.models.UserData
 import kotlinx.android.synthetic.main.fragment_new_event_users.*
@@ -78,12 +79,13 @@ class NewEventParticipantsFragment(
     }
 
     private fun submitSpinner(users: List<UserData>) {
-        new_users_spinner.adapter =
-            ArrayAdapter(
-                parentActivity,
-                R.layout.support_simple_spinner_dropdown_item,
-                if (users.isEmpty()) listOf(getString(R.string.new_users_spinner_empty_ph)) else users.map(UserData::name),
-            ).apply { setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item) }
+        new_users_spinner.adapter = DefaultSpinnerAdapter(
+            if (users.isEmpty()) {
+                listOf(getString(R.string.new_users_spinner_empty_ph))
+            } else {
+                users.map(UserData::name)
+            },
+        )
     }
 
     private fun subscribeOnViewModel() {
