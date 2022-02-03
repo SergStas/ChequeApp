@@ -7,7 +7,9 @@ import com.example.chequeapp.presentation.newevent.names.AbstractNevEventNamesPa
 import com.example.chequeapp.presentation.newevent.names.NewEventNamesPageViewModel
 import com.example.chequeapp.presentation.newevent.participants.AbstractNewEventParticipantsPageViewModel
 import com.example.chequeapp.presentation.newevent.participants.NewEventParticipantsPageViewModel
+import com.example.chequeapp.presentation.newevent.receipts.AbstractNewEventNewReceiptViewModel
 import com.example.chequeapp.presentation.newevent.receipts.AbstractNewEventReceiptsViewModel
+import com.example.chequeapp.presentation.newevent.receipts.NewEventNewReceiptViewModel
 import com.example.chequeapp.presentation.newevent.receipts.NewEventReceiptsViewModel
 import com.example.chequeapp.validation.newevent.INewEventNamesPageValidator
 import com.example.chequeapp.validation.newevent.NewEventNamesPageValidator
@@ -21,6 +23,7 @@ class AppNewEventModule {
     private var namesPageViewModel: AbstractNevEventNamesPageViewModel? = null
     private var participantsPageViewModel: AbstractNewEventParticipantsPageViewModel? = null
     private var receiptsPageViewModel: AbstractNewEventReceiptsViewModel? = null
+    private var newReceiptViewModel: AbstractNewEventNewReceiptViewModel? = null
 
     private var namesPageValidator: INewEventNamesPageValidator? = null
 
@@ -72,6 +75,19 @@ class AppNewEventModule {
                 rootViewModel = viewModel,
             )
             receiptsPageViewModel!!
+        }
+
+    @Provides
+    fun provideNewReceiptViewModel(
+        context: Context,
+        usersViewModel: AbstractNewEventParticipantsPageViewModel,
+        receiptsViewModel: AbstractNewEventReceiptsViewModel,
+    ): AbstractNewEventNewReceiptViewModel =
+        newReceiptViewModel ?: run {
+            newReceiptViewModel = NewEventNewReceiptViewModel(context)
+            newReceiptViewModel!!.updateParticipants(usersViewModel.addedUsersLive.value?.toList() ?: emptyList())
+            newReceiptViewModel!!.changeTitle(receiptsViewModel.activeReceipt?.name ?: "")
+            newReceiptViewModel!!
         }
 
     @Provides

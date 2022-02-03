@@ -13,6 +13,7 @@ class NewEventReceiptsViewModel(
     private val context: Context,
     private val rootViewModel: AbstractNewEventViewModel,
 ): AbstractNewEventReceiptsViewModel() {
+    override var activeReceipt: SessionData.ReceiptData? = null
     override val receiptsLive = MutableLiveData<List<SessionData.ReceiptData>>(emptyList())
     override val errorMessageLive = MutableLiveData("")
 
@@ -44,7 +45,13 @@ class NewEventReceiptsViewModel(
     }
 
     override fun edit(name: String) {
-        App.toast("Not yet implemented")
+        val receipt = receiptsLive.value?.firstOrNull { r -> r.name == name }
+        if (receipt == null) {
+            App.toast("Unexpected error has occurred")
+        } else {
+            activeReceipt = receipt
+            rootViewModel.switchPage(NewEventPage.NewReceipt)
+        }
     }
 
     override fun back() {

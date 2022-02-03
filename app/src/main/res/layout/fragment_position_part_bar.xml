@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/purple_200"
     android:orientation="horizontal"
     tools:context=".PositionPartBarFragment">
 
@@ -22,6 +23,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/ppb_et_part"
         android:autofillHints="no"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:inputType="numberDecimal"
         android:layout_marginStart="10dp"/>
 

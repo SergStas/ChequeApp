@@ -46,8 +46,8 @@
     <string name="receipt_tv_payer">Payer:</string>
     <string name="receipt_et_position_hint">New position name…</string>
     <string name="receipt_b_confirm">Confirm</string>
-    <string name="position_et_title">Position title</string>
-    <string name="position_et_price_hint">Price</string>
+    <string name="position_et_title">Input position title</string>
+    <string name="position_et_price_hint">Input price</string>
     <string name="position_tv_new_part">New participant:</string>
     <string name="ppb_et_part">Part in percents</string>
     <string name="new_b_show_calendar_hide">Hide</string>
@@ -59,4 +59,7 @@
     <string name="new_receipts_error_unique">Receipt name must be unique for current event</string>
     <string name="new_receipts_error_no_receiptrs">Please add at least 1 cheque</string>
     <string name="new_receipts_tv_empty">No cheques added</string>
+    <string name="receipt_error_unique_pos">Position name must be unique</string>
+    <string name="receipt_error_negative_price">Price must be greater than zero</string>
+    <string name="receipt_error_not_eq_to_one">Parts must be 1 in sum</string>
 </resources>

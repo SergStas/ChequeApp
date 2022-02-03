@@ -17,16 +17,28 @@ class NewEventViewModel: AbstractNewEventViewModel() {
     }
 
     override fun submitNameAndDate(name: String, date: Date) {
-        eventDataLive.value?.sessionData?.name = name
-        eventDataLive.value?.sessionData?.date = date.time
+        eventDataLive.value = eventDataLive.value?.copy(
+            sessionData = eventDataLive.value!!.sessionData.copy(
+                name = name,
+                date = date.time,
+            ),
+        )
     }
 
     override fun submitUsers(users: List<UserData>) {
-        eventDataLive.value?.sessionData?.participants = users
+        eventDataLive.value = eventDataLive.value?.copy(
+            sessionData = eventDataLive.value!!.sessionData.copy(
+                participants = users,
+            ),
+        )
     }
 
     override fun submitReceipts(receipts: List<SessionData.ReceiptData>) {
-        eventDataLive.value?.sessionData?.receipts = receipts
+        eventDataLive.value = eventDataLive.value?.copy(
+            sessionData = eventDataLive.value!!.sessionData.copy(
+                receipts = receipts
+            ),
+        )
     }
 
     override fun finishAndCalculate() {

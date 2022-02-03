@@ -1,14 +1,11 @@
 package com.example.chequeapp.models.newevent
 
 import com.example.domain.models.SessionData
+import com.example.domain.models.UserData
 
 data class PositionDataElement(
     val id: Int,
-    var position: SessionData.PositionData,
-    var msg: String?,
-) {
-    companion object {
-        fun withNoMessage(id: Int, position: SessionData.PositionData) =
-            PositionDataElement(id, position, null)
-    }
-}
+    val position: SessionData.PositionData,
+    val msg: String?,
+    val selectedUserData: UserData?,
+)

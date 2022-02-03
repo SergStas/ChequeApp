@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/teal_200"
     tools:context=".ui.newevent.receipts.PositionBarFragment">
 
     <ImageView
@@ -18,6 +19,17 @@
         android:background="#ddd"
         android:padding="6dp" />
 
+    <TextView
+        android:id="@+id/position_tv_error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/position_iv_delete"
+        app:layout_constraintBottom_toBottomOf="@id/position_iv_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/position_iv_delete"
+        tools:text="An error has occurred"
+        android:textColor="#f00" />
+
     <EditText
         android:id="@+id/position_et_title"
         android:layout_width="0dp"
@@ -28,6 +40,8 @@
         app:layout_constraintEnd_toStartOf="@id/position_et_price"
         android:layout_marginEnd="20dp"
         android:autofillHints="no"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:inputType="text"
         android:hint="@string/position_et_title" />
 
@@ -38,6 +52,8 @@
         app:layout_constraintTop_toBottomOf="@id/position_iv_delete"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="@string/position_et_price_hint"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:autofillHints="no"
         android:inputType="numberDecimal" />
 
@@ -54,18 +70,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/position_rv_parts"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             tools:layout_height="200dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/position_b_add_part" />
+            app:layout_constraintBottom_toTopOf="@id/position_b_add_participant" />
 
         <TextView
             android:id="@+id/position_tv_new_part"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/position_b_add_part"
-            app:layout_constraintBottom_toBottomOf="@id/position_b_add_part"
+            app:layout_constraintTop_toTopOf="@id/position_b_add_participant"
+            app:layout_constraintBottom_toBottomOf="@id/position_b_add_participant"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/position_tv_new_part" />
 
@@ -74,12 +90,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/position_tv_new_part"
-            app:layout_constraintEnd_toStartOf="@id/position_b_add_part"
-            app:layout_constraintTop_toTopOf="@id/position_b_add_part"
-            app:layout_constraintBottom_toBottomOf="@id/position_b_add_part" />
+            app:layout_constraintEnd_toStartOf="@id/position_b_add_participant"
+            app:layout_constraintTop_toTopOf="@id/position_b_add_participant"
+            app:layout_constraintBottom_toBottomOf="@id/position_b_add_participant" />
 
         <ImageView
-            android:id="@+id/position_b_add_part"
+            android:id="@+id/position_b_add_participant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="6dp"
@@ -89,15 +105,4 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/position_tv_error"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/position_layout_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="An error has occurred"
-        android:textColor="#f00" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

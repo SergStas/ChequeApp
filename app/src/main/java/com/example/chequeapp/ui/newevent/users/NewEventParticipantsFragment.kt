@@ -80,7 +80,8 @@ class NewEventParticipantsFragment(
 
     private fun submitSpinner(users: List<UserData>) {
         new_users_spinner.adapter = DefaultSpinnerAdapter(
-            if (users.isEmpty()) {
+            context = parentActivity,
+            labels = if (users.isEmpty()) {
                 listOf(getString(R.string.new_users_spinner_empty_ph))
             } else {
                 users.map(UserData::name)

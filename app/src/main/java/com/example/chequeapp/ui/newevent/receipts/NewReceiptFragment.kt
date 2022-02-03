@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chequeapp.App
 import com.example.chequeapp.R
@@ -17,6 +18,7 @@ import com.example.chequeapp.presentation.newevent.receipts.AbstractNewEventNewR
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import com.example.domain.models.UserData
 import kotlinx.android.synthetic.main.fragment_new_receipt.*
+import java.lang.Integer.max
 import javax.inject.Inject
 
 class NewReceiptFragment(
@@ -25,7 +27,7 @@ class NewReceiptFragment(
     @Inject
     lateinit var viewModel: AbstractNewEventNewReceiptViewModel
 
-    private lateinit var adapter: AbstractNewEventReceiptPositionsAdapter
+    private lateinit var listAdapter: AbstractNewEventReceiptPositionsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,18 +65,19 @@ class NewReceiptFragment(
             titleLive.observe(parentActivity) { t -> receipt_et_title.setText(t) }
 
             pageErrorLive.observe(parentActivity) { msg ->
-                if (!msg.isNullOrEmpty()) {
-                    receipt_tv_error.text = msg
-                }
-                receipt_tv_error.isVisible = msg.isNullOrEmpty()
+                receipt_tv_error.text = msg
+                receipt_tv_error.isVisible = !msg.isNullOrEmpty()
             }
 
-            positionsLive.observe(parentActivity, adapter::submitList)
-            lastModifiedPosition.observe(parentActivity) { pos ->
-                if (pos != null) {
-                    adapter.updatePosition(pos)
+            positionsLive.observe(parentActivity, { newList ->
+                val oldSize = listAdapter.currentList.size
+                listAdapter.submitList(newList.toList())
+                if (oldSize < newList.size) {
+                    val lastIndex = max(listAdapter.currentList.size - 1, 0)
+                    receipts_rv_positions.smoothScrollToPosition(lastIndex)
+                    receipt_et_position?.setText("")
                 }
-            }
+            })
         }
     }
 
@@ -90,18 +93,17 @@ class NewReceiptFragment(
                     id: Long,
                 ) {
                     val name = parent?.getItemAtPosition(position) as String
-                    if (name != parentActivity.getString(R.string.new_users_spinner_empty_ph))
+                    if (name != parentActivity.getString(R.string.new_users_spinner_empty_ph)) {
                         viewModel.changePayer(name)
+                    }
                 }
             }
-            val availableUsers = viewModel.participants.toMutableList()
-                .apply { remove(viewModel.payerLive.value) }
-            val names = if (availableUsers.isEmpty()) {
+            val names = if (viewModel.participants.isEmpty()) {
                 listOf(context.getString(R.string.new_users_spinner_empty_ph))
             } else {
-                availableUsers.map(UserData::name)
+                viewModel.participants.map(UserData::name)
             }
-            adapter = DefaultSpinnerAdapter(names)
+            adapter = DefaultSpinnerAdapter(parentActivity, names)
         }
     }
 
@@ -113,17 +115,22 @@ class NewReceiptFragment(
                 LinearLayoutManager.VERTICAL,
                 false,
             )
-            it.adapter = adapter
+            it.adapter = listAdapter
+            val animator = it.itemAnimator
+            if (animator is DefaultItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
         }
     }
 
     private fun initAdapter() {
-        adapter = NewEventReceiptPositionsAdapter(
+        listAdapter = NewEventReceiptPositionsAdapter(
+            participants = viewModel.participants,
             onNewUserSelected = viewModel::changeSelectedUser,
             onPositionPriceChanged = viewModel::changePositionPrice,
             onPositionTitleChanged = viewModel::changePositionTitle,
             onAddButtonClicked = { id ->
-                val user = viewModel.selectedUsersMapLive.value?.get(id) ?: ""
+                val user = viewModel.positionsLive.value?.get(id)?.selectedUserData?.name ?: ""
                 viewModel.addParticipantToPosition(id, user)
             },
             onPartRemoved = { id, part ->
@@ -132,7 +139,7 @@ class NewReceiptFragment(
             onPartValueChanged = { id, part, percentage ->
                 viewModel.changePart(id, part.user.name, percentage)
             },
-            onDeletePositionClicked = viewModel::deletePosition
+            onDeletePositionClicked = viewModel::deletePosition,
         )
     }
 

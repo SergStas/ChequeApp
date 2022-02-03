@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.domain.models.SessionData
 
 abstract class AbstractNewEventReceiptsViewModel {
+    abstract var activeReceipt: SessionData.ReceiptData?
+
     abstract val receiptsLive: MutableLiveData<List<SessionData.ReceiptData>>
     abstract val errorMessageLive: MutableLiveData<String>
 

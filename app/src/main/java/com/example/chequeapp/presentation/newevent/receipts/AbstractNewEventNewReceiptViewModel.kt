@@ -5,15 +5,15 @@ import com.example.chequeapp.models.newevent.PositionDataElement
 import com.example.domain.models.UserData
 
 abstract class AbstractNewEventNewReceiptViewModel {
-    abstract val participants: List<UserData>
+    abstract var participants: List<UserData>
 
     abstract val titleLive: MutableLiveData<String>
-    abstract val payerLive: MutableLiveData<UserData>
+    abstract val payerLive: MutableLiveData<UserData?>
     abstract val pageErrorLive: MutableLiveData<String?>
     abstract val positionsLive: MutableLiveData<List<PositionDataElement>>
-    abstract val selectedUsersMapLive: MutableLiveData<Map<Int, String>>
     abstract val lastModifiedPosition: MutableLiveData<PositionDataElement?>
 
+    abstract fun updateParticipants(users: List<UserData>)
     abstract fun changeTitle(title: String)
     abstract fun changePayer(userName: String)
     abstract fun createPosition(title: String)
