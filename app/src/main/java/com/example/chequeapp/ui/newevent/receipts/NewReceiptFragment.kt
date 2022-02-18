@@ -18,7 +18,6 @@ import com.example.chequeapp.presentation.newevent.receipts.AbstractNewEventNewR
 import com.example.chequeapp.ui.root.AbstractRootActivity
 import com.example.domain.models.UserData
 import kotlinx.android.synthetic.main.fragment_new_receipt.*
-import java.lang.Integer.max
 import javax.inject.Inject
 
 class NewReceiptFragment(
@@ -73,7 +72,7 @@ class NewReceiptFragment(
                 val oldSize = listAdapter.currentList.size
                 listAdapter.submitList(newList.toList())
                 if (oldSize < newList.size) {
-                    val lastIndex = max(listAdapter.currentList.size - 1, 0)
+                    val lastIndex = kotlin.math.max(listAdapter.currentList.size - 1, 0)
                     receipts_rv_positions.smoothScrollToPosition(lastIndex)
                     receipt_et_position?.setText("")
                 }
@@ -130,7 +129,7 @@ class NewReceiptFragment(
             onPositionPriceChanged = viewModel::changePositionPrice,
             onPositionTitleChanged = viewModel::changePositionTitle,
             onAddButtonClicked = { id ->
-                val user = viewModel.positionsLive.value?.get(id)?.selectedUserData?.name ?: ""
+                val user = viewModel.positionsLive.value?.firstOrNull { p -> p.id == id }?.selectedUserData?.name ?: ""
                 viewModel.addParticipantToPosition(id, user)
             },
             onPartRemoved = { id, part ->

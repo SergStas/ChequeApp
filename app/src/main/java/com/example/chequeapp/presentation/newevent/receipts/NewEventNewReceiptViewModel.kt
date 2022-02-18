@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.chequeapp.App
 import com.example.chequeapp.R
+import com.example.chequeapp.models.errors.CompositeError
+import com.example.chequeapp.models.errors.NewReceiptError
 import com.example.chequeapp.models.newevent.PositionDataElement
 import com.example.domain.models.SessionData
 import com.example.domain.models.UserData
@@ -49,7 +51,7 @@ class NewEventNewReceiptViewModel(
                     price = 0f,
                     parts = emptyList(),
                 ).withDefaultParts(participants),
-                msg = null,
+                error = CompositeError(),
                 selectedUserData = null,
             )
             mutablePositions.add(pos)
@@ -67,19 +69,19 @@ class NewEventNewReceiptViewModel(
                 pos = pos.copy(position = pos.position.copy(name = title))
                 ""
             }
-        pos = pos.copy(msg = msg)
+        pos = pos.copy(error = msg)
         updatePosition(positionId, pos)
     }
 
     override fun changePositionPrice(positionId: Int, price: Float) {
         var pos = getById(positionId) ?: return
-        val msg = if (price <= 0) {
-            context.getString(R.string.receipt_error_negative_price)
+        if (price <= 0) {
+            pos = pos.copy(error = pos.error.apply { add(NewReceiptError(context.getString(R.string.receipt_error_negative_price))) })
         } else {
+
             pos = pos.copy(position = pos.position.copy(price = price))
             ""
         }
-        pos = pos.copy(msg = msg)
         updatePosition(positionId, pos)
     }
 
@@ -110,7 +112,7 @@ class NewEventNewReceiptViewModel(
         val oldValue = pos.position.parts.firstOrNull { u -> u.user.name == userName}?.part ?: return
         val total =
             (pos.position.parts.sumOf { p -> p.part.toDouble() } - oldValue) / 100 + value - 1
-        pos = pos.copy(msg = when {
+        pos = pos.copy(error = when {
             value <= 0 -> context.getString(R.string.receipt_error_not_eq_to_one)
             abs(total) > 5e-3 ->
                 context.getString(R.string.receipt_error_not_eq_to_one)
@@ -140,7 +142,9 @@ class NewEventNewReceiptViewModel(
         positionsLive.value?.firstOrNull { p -> p.id == id}
 
     private fun updatePosition(id: Int, value: PositionDataElement, updateLiveData: Boolean = true) {
-        mutablePositions[id] = value
+        val index = mutablePositions.indexOfFirst { p -> p.id == id }
+        if (index == -1) return
+        mutablePositions[index] = value
         if (updateLiveData) {
             positionsLive.value = mutablePositions.toList()
         }

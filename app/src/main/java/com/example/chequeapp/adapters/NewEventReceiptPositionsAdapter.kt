@@ -1,12 +1,9 @@
 package com.example.chequeapp.adapters
 
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chequeapp.R
@@ -50,8 +47,8 @@ class NewEventReceiptPositionsAdapter(
 
             setSpinner(holder, positionData)
 
-            position_tv_error?.text = positionData.msg ?: ""
-            position_tv_error?.isVisible = !positionData.msg.isNullOrEmpty()
+            position_tv_error?.text = positionData.error ?: ""
+            position_tv_error?.isVisible = !positionData.error.isNullOrEmpty()
 
             position_b_add_participant?.setOnClickListener { onAddButtonClicked(positionData.id) }
             position_iv_delete?.setOnClickListener { onDeletePositionClicked(positionData.id) }
